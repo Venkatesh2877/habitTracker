@@ -4,11 +4,16 @@ const app = express();
 
 app.use(express.urlencoded());
 
+const db=require('./config/mongoose.js');
+
 
 
 // set up the view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+//access static file 
+app.use(express.static('./assets'));
 
 //use expres  router
 app.use('/', require('./routes'));

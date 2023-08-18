@@ -1,10 +1,38 @@
 <html>
     <header>
-        <%=title%>
-
+        <title>
+            <%=title%>
+        </title>
+        <link rel="stylesheet" href="/css/home.css">
+        <script src="https://kit.fontawesome.com/d80069c1ff.js" crossorigin="anonymous"></script>    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </header>
 
+
     <body>
-        <h1>hello</h1>
+        <h1>Hi Venkatesh. </h1>
+          <h1>  Here Are your Tasks</h1>
+          <div id="habit-container">
+            <%for(habit of habits){%>
+                <div class="habit" id="<%=habit.id%>">
+                    <div><%=habit.name%></div>
+                    <div>
+                        <a class= "deleteTag" href="/delete/?id=<%=habit.id%>"><i class="fa-regular fa-trash-can fa-bounce"></i></a>
+                    </div>
+                </div>
+            <%}%>
+          </div>
+        
+        
+
+
+        <form action="/new-habit" id="new-habit-form" method="post">
+            <input type="text" name="name" placeholder="Any new habit??">
+            <input type="hidden" name="completed" value="1">
+            <input type="submit">
+        </form>
     </body>
+    <script src="/js/home.js"></script>
 </html>
