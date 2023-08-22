@@ -1,3 +1,5 @@
+
+
 {
     let createHabit= function(){
         let createForm=$('#new-habit-form');
@@ -12,6 +14,8 @@
                 success: function(data) {
                     let newHabit=newHabitDOM(data.data.habit);
                     $('#habit-container').append(newHabit);
+                    
+                  //  changeCompletedStatus($('completed-status', newHabit));
 
                     deleteHabit($(' .deleteTag', newHabit));
                 },error:function(err){
@@ -22,13 +26,18 @@
     }
 
     newHabitDOM=(habit)=>{
+
         return $(`<div class="habit" id="${habit._id}">
-        <div>${habit.name}</div>
+        <div style="width: 40%">${habit.name}</div>
+        <div>
+            <div class="completed-status" style="background-color: orange"};"></div>
+        </div>
         <div>
             <a class="deleteTag" href="/delete/?id=${habit._id}"><i class="fa-regular fa-trash-can fa-bounce"></i></a>
         </div>
     </div>`)
     }
+
 
     deleteHabit=(link)=>{
        $(link).click(function(e){
@@ -38,7 +47,8 @@
             type:'get',
             url:$(link).prop('href'),
             success:function(data){
-                $(`#habit-container> #${data.data.habit_id}`).remove();
+                console.log(data);
+                $(`#${data.data.habit_id}`).remove();
             },error:function(err){
                 console.log(err);
             }
@@ -47,6 +57,8 @@
        })
     }
 
+
     createHabit();
 
 }
+

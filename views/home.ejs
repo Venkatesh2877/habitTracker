@@ -17,7 +17,19 @@
           <div id="habit-container">
             <%for(habit of habits){%>
                 <div class="habit" id="<%=habit.id%>">
-                    <div><%=habit.name%></div>
+                    <div style="width: 40%;"><%=habit.name%></div>
+                    <div>
+                        <a href="/complete-update/?id=<%=habit.id%>">
+                            <%if(habit.completed==1){%>
+                                <div class="completed-status" style="background-color: orange;"></div>
+                            <%}else if(habit.completed==2){%>
+                                <div class="completed-status" style="background-color: green;"></div>
+                            <%}else if(habit.completed==3){%>
+                                <div class="completed-status" style="background-color: red;"></div>
+                            <%}%>
+                        </a>
+                        
+                    </div>
                     <div>
                         <a class= "deleteTag" href="/delete/?id=<%=habit.id%>"><i class="fa-regular fa-trash-can fa-bounce"></i></a>
                     </div>
@@ -30,7 +42,7 @@
 
         <form action="/new-habit" id="new-habit-form" method="post">
             <input type="text" name="name" placeholder="Any new habit??">
-            <input type="hidden" name="completed" value="1">
+            <input type="hidden" name="completed" value="3">
             <input type="submit">
         </form>
     </body>

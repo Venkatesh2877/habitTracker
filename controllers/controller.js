@@ -55,3 +55,17 @@ module.exports.delete= async function(req,res){
         console.log(err);
     }  
 }
+
+module.exports.completeUpdate= async function(req,res){
+    try{
+        let habit= Habit.findByIdAndUpdate(req.query.id);
+        habit.complete=2;
+        ///write a logic to update the completed field and use ajax to add and remove
+        //if(req.hxr)
+        console.log(req.query.id);
+       // return res.redirect('back');
+    }catch(err){
+        console.log(err);
+    }
+
+}

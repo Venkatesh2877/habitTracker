@@ -12,8 +12,9 @@ h1{
     border: 2px red solid;
     padding: 10px;
     margin: auto;
+    margin-top: 10px;
     display: flex;
-    justify-content: space-between;
+   justify-content: space-between;
 }
 
 form{
@@ -23,4 +24,9 @@ form{
 }
 input{
     margin: 10px;
+}
+
+.completed-status{
+    width: 10px;
+    height: 10px;
 }
