@@ -63,7 +63,7 @@
         var today = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 10);
         
         return $(`<div class="habit" id="${habit._id}">
-        <div style="width: 40%">${habit.content}</div>
+        <div style="width: 40%; font-size: 1.3rem;">${habit.content}</div>
         <div>
             <a class="completed-status-link" href="/complete-status-update/?id=${habit._id}&date=${today}">
                 <div class="completed-status" style="background-color: ${color}"};"></div>

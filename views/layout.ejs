@@ -1,0 +1,54 @@
+<html>
+    <header>
+        <title>
+            <%=title%>
+        </title>
+        <style>
+            #demo{
+                display: flex; 
+                justify-content: space-around; 
+                margin: auto;
+                width: 30%;
+            }
+
+            .individual-demo{
+                display: flex;
+                align-items: center;
+            }
+
+            .completed-status{
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: wheat 1px solid;
+                margin: 5px;
+            }
+        </style>
+       
+        <script src="https://kit.fontawesome.com/d80069c1ff.js" crossorigin="anonymous"></script>    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    </header>
+
+
+    <body>
+        <h1>Hi Venkatesh</h1>
+        <div id="demo">
+            <div class="individual-demo">
+                <div class="completed-status" style="background-color: orange;"></div>
+                <div>None</div>
+            </div>
+            <div class="individual-demo">
+                <div class="completed-status" style="background-color: green;"></div>
+                <div>Done</div>
+            </div>
+            <div class="individual-demo">
+                <div class="completed-status" style="background-color: red;"></div>
+                <div>Not Done</div>
+            </div>
+        </div>
+          
+        <%- body%>
+    </body>
+</html>
