@@ -14,24 +14,36 @@
     <body>
         <h1>Hi Venkatesh. </h1>
           <h1>  Here Are your Tasks</h1>
+          <div id="date"> </div>
+          <a href="/weekly"><div id="weekly"> Weekly</div></a>
+          
           <div id="habit-container">
-            <%for(habit of habits){%>
+            <%for(habit of habits){
+                let tzoffset = (new Date()).getTimezoneOffset() * 60000, found=false, status='';
+                var today = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 10);
+                habit.dates.find(function (item, index) {
+                    if(item.date === today)
+                    {
+                        found = true;
+                        status = item.complete;
+                    }
+                });
+                %>
                 <div class="habit" id="<%=habit.id%>">
-                    <div style="width: 40%;"><%=habit.name%></div>
+                    <div class= "daily-habit-content" style="width: 40%;"><%=habit.content%></div>
                     <div>
-                        <a href="/complete-update/?id=<%=habit.id%>">
-                            <%if(habit.completed==1){%>
-                                <div class="completed-status" style="background-color: orange;"></div>
-                            <%}else if(habit.completed==2){%>
-                                <div class="completed-status" style="background-color: green;"></div>
-                            <%}else if(habit.completed==3){%>
-                                <div class="completed-status" style="background-color: red;"></div>
-                            <%}%>
-                        </a>
-                        
+                        <a href="complete-status-update/?id=<%= habit._id %>&date=<%=today %>" class="completed-status-link">
+                            <% if(found && status==='yes'){ %>
+                            <div class="completed-status" style=" background-color:green;"></div>
+                            <% } else if(found && status==='no'){ %>
+                                <div class="completed-status" style=" background-color:red;"></div>
+                            <% } else { %>
+                                <div class="completed-status" style="  background-color:orange;"></div>
+                            <% } %>
+                        </a>        
                     </div>
                     <div>
-                        <a class= "deleteTag" href="/delete/?id=<%=habit.id%>"><i class="fa-regular fa-trash-can fa-bounce"></i></a>
+                        <a class= "deleteTag" href="/delete/?id=<%=habit.id%>"><i class="fa-regular fa-trash-can"></i></a>
                     </div>
                 </div>
             <%}%>
@@ -41,9 +53,9 @@
 
 
         <form action="/new-habit" id="new-habit-form" method="post">
-            <input type="text" name="name" placeholder="Any new habit??">
-            <input type="hidden" name="completed" value="3">
-            <input type="submit">
+            <input type="text" name="content" required placeholder="Any new habit??">
+            <!-- <input type="hidden" name="completed" value="1"> -->
+            <input type="submit" style="color: white; background-color: goldenrod;">
         </form>
     </body>
     <script src="/js/home.js"></script>
