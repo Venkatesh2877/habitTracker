@@ -13,7 +13,7 @@ module.exports.home= async function(req,res){
         days.push(getD(1));
         days.push(getD(0));
 
-        return res.render('home', {
+        return res.render('index', {
             title: 'Habit Tracker',
             habits: habits,
             days:days
